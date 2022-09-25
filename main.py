@@ -1,16 +1,30 @@
-# This is a sample Python script.
+import turtle
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+width, height = turtle.Screen().window_width(), turtle.Screen().window_height()
+#screen
+sc = turtle.Screen()
+sc.setup(width, height)
+sc.title('PONG GAME')
+sc.bgcolor('black')
+
+#left pad
+left = turtle.Turtle()
+left.speed(0)
+left.shape("square")
+left.color("grey")
+left.shapesize(6, 1)
+left.penup()
+left.goto(-width/2 + 30, 0)
+
+#ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("circle")
+ball.color("green")
+ball.shapesize(2)
+ball.penup()
+ball.goto(0,0)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+while True:
+    sc.update()
