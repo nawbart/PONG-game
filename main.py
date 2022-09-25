@@ -1,6 +1,7 @@
 import turtle
 
 width, height = turtle.Screen().window_width(), turtle.Screen().window_height()
+print(width, height)
 #screen
 sc = turtle.Screen()
 sc.setup(width, height)
@@ -24,7 +25,39 @@ ball.color("green")
 ball.shapesize(2)
 ball.penup()
 ball.goto(0,0)
+ball.dx = 5
+ball.dy = 6
 
+
+def go_up():
+    y = left.ycor()
+    y += 20
+    left.sety(y)
+
+
+def go_down():
+    y = left.ycor()
+    y -= 20
+    left.sety(y)
+
+
+sc.listen()
+sc.onkeypress(go_up, "Up")
+sc.onkeypress(go_down, "Down")
 
 while True:
     sc.update()
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    if ball.ycor() > width/2 - 90:
+        ball.dy *= -1
+
+    if ball.xcor() > width / 2 - 30:
+        ball.dx *= -1
+
+    if ball.ycor() < -width/2 + 90:
+        ball.dy *= -1
+
+    if ball.xcor() < -width / 2 + 30:
+        ball.dx *= -1
