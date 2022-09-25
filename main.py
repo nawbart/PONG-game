@@ -15,7 +15,7 @@ left.shape("square")
 left.color("grey")
 left.shapesize(6, 1)
 left.penup()
-left.goto(-width/2 + 30, 0)
+left.goto(-width/2+50, 0)
 
 #ball
 ball = turtle.Turtle()
@@ -25,8 +25,8 @@ ball.color("green")
 ball.shapesize(2)
 ball.penup()
 ball.goto(0,0)
-ball.dx = 5
-ball.dy = 6
+ball.dx = 7
+ball.dy = 1
 
 
 def go_up():
@@ -60,4 +60,8 @@ while True:
         ball.dy *= -1
 
     if ball.xcor() < -width / 2 + 30:
+        ball.dx *= -1
+
+
+    if (ball.xcor() < -width/2 + 60 and ball.xcor() > -width/2 + 40) and (ball.ycor() < left.ycor() + 40 and ball.ycor() > left.ycor() - 40):
         ball.dx *= -1
