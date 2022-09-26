@@ -1,4 +1,5 @@
 import turtle
+import random
 
 score = 0
 width, height = turtle.Screen().window_width(), turtle.Screen().window_height()
@@ -26,8 +27,8 @@ ball.color("green")
 ball.shapesize(2)
 ball.penup()
 ball.goto(0,0)
-ball.dx = 7
-ball.dy = 1
+ball.dx = random.randint(3,7)
+ball.dy = random.randint(-3,5)
 
 #wynik
 sketch = turtle.Turtle()
@@ -79,6 +80,11 @@ while True:
     if ball.xcor() < -width / 2 + 30:
         #ball.dx *= -1
         ball.setpos(0,0)
+        ball.dx = 0
+        ball.dy = 0
+        sketch.clear()
+        sketch.write(f"YOU LOOSE", align="center",
+                     font=("Courier", 24, "normal"))
 
 
     if (ball.xcor() < -width/2 + 60 and ball.xcor() > -width/2 + 40) and (ball.ycor() < left.ycor() + 40 and ball.ycor() > left.ycor() - 40):
