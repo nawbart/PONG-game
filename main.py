@@ -1,12 +1,13 @@
 import turtle
 
+score = 0
 width, height = turtle.Screen().window_width(), turtle.Screen().window_height()
-print(width, height)
+
 #screen
 sc = turtle.Screen()
 sc.setup(width, height)
 sc.title('PONG GAME')
-sc.bgcolor('black')
+sc.bgcolor('white')
 
 #left pad
 left = turtle.Turtle()
@@ -27,6 +28,16 @@ ball.penup()
 ball.goto(0,0)
 ball.dx = 7
 ball.dy = 1
+
+#wynik
+sketch = turtle.Turtle()
+sketch.speed(0)
+sketch.color("blue")
+sketch.penup()
+sketch.hideturtle()
+sketch.goto(0, 260)
+sketch.write(f"Score : 0", align="center",
+             font=("Courier", 24, "normal"))
 
 
 def go_up():
@@ -53,14 +64,21 @@ while True:
     if ball.ycor() > width/2 - 90:
         ball.dy *= -1
 
+
     if ball.xcor() > width / 2 - 30:
-        ball.dx *= -1
+        score += 1
+        sketch.clear()
+        sketch.write(f"Score : {score}", align="center",
+                     font=("Courier", 24, "normal"))
+        ball.dx *= -1.1
+
 
     if ball.ycor() < -width/2 + 90:
         ball.dy *= -1
 
     if ball.xcor() < -width / 2 + 30:
-        ball.dx *= -1
+        #ball.dx *= -1
+        ball.setpos(0,0)
 
 
     if (ball.xcor() < -width/2 + 60 and ball.xcor() > -width/2 + 40) and (ball.ycor() < left.ycor() + 40 and ball.ycor() > left.ycor() - 40):
